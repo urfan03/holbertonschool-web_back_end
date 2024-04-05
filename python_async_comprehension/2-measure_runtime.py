@@ -8,7 +8,7 @@
         explain it to yourself.
 """
 
-import asyncio
+from asyncio import gather
 from time import time
 
 
@@ -19,10 +19,7 @@ async def measure_runtime() -> float:
     tasks = []
     start_time = time()
     for i in range(4):
-        tasks.append(asyncio.create_task(async_comprehension),
-                     asyncio.create_task(async_comprehension),
-                     asyncio.create_task(async_comprehension),
-                     asyncio.create_task(async_comprehension))
-    await asyncio.gather(*tasks)
+        await gather(async_comprehension(), async_comprehension(),
+                 async_comprehension(), async_comprehension())
     end_time = time()
     return  end_time - start_time
