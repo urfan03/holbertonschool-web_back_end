@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """ LFU Caching """
 from base_caching import BaseCaching
