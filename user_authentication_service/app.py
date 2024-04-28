@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """ Basic Flask app, Register user, Log in, Log out, User profile,
     Get reset passwords token, Update password end-point """

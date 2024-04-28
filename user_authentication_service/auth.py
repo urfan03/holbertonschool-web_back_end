@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """ Hash password, Register user, Credentials validation, Generate UUIDs,
     Find user by session ID, Destroy session, Generate reset password token,
