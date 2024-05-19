@@ -3,6 +3,7 @@
     obtain the HTML content of a particular URL and returns it """
 import redis
 import requests
+
 r = redis.Redis()
 count = 0
 
