@@ -66,6 +66,9 @@ def before_request() -> str:
         abort(403)
 
 
+    current_user = auth.current_user(request)
+    request.current_user = current_user
+
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
