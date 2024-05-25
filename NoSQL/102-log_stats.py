@@ -1,45 +1,56 @@
 #!/usr/bin/env python3
-""" MongoDB Operations with Python using pymongo """
+"""
+Task 15: adding the top 10 of the most present IPs in the collection nginx of
+the database logs.
+"""
 from pymongo import MongoClient
 
-if __name__ == "__main__":
-    """ Provides some stats about Nginx logs stored in MongoDB """
+
+def log_stats():
+    """
+    Retrieves statistics from a MongoDB collection of nginx logs.
+
+    Counts the total number of logs, the number of logs for each HTTP method,
+    the number of logs with a specific path, and the top 10 most frequent IP
+    addresses.
+
+    Outputs:
+    - The total number of logs.
+    - The number of logs for each HTTP method.
+    - The number of logs with a specific path.
+    - The top 10 most frequent IP addresses and their counts.
+    """
+
     client = MongoClient('mongodb://127.0.0.1:27017')
-    nginx_collection = client.logs.nginx
+    logs_collection = client.logs.nginx
 
-    n_logs = nginx_collection.count_documents({})
-    print(f'{n_logs} logs')
+    total_logs = logs_collection.count_documents({})
 
+    print(f"{total_logs} logs")
+
+    print("Methods:")
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-    print('Methods:')
     for method in methods:
-        count = nginx_collection.count_documents({"method": method})
-        print(f'\tmethod {method}: {count}')
+        count = logs_collection.count_documents({"method": method})
+        print(f"\tmethod {method}: {count}")
 
-    status_check = nginx_collection.count_documents(
-        {"method": "GET", "path": "/status"}
-    )
+    status_check_count = logs_collection.count_documents({"path": "/status"})
+    print(f"{status_check_count} status check")
 
-    print(f'{status_check} status check')
-
-    top_ips = nginx_collection.aggregate([
-        {"$group":
-            {
-                "_id": "$ip",
-                "count": {"$sum": 1}
-            }
-         },
+    pipeline = [
+        {"$group": {"_id": "$ip", "count": {"$sum": 1}}},
         {"$sort": {"count": -1}},
-        {"$limit": 10},
-        {"$project": {
-            "_id": 0,
-            "ip": "$_id",
-            "count": 1
-        }}
-    ])
+        {"$limit": 10}
+    ]
+
+    ip_counts = logs_collection.aggregate(pipeline)
 
     print("IPs:")
-    for top_ip in top_ips:
-        ip = top_ip.get("ip")
-        count = top_ip.get("count")
-        print(f'\t{ip}: {count}')
+    for ip_count in ip_counts:
+        ip = ip_count["_id"]
+        count = ip_count["count"]
+        print(f"\t{ip}: {count}")
+
+
+if __name__ == "__main__":
+    log_stats()
