@@ -1,7 +1,7 @@
 # 0x0E. ES6 Basics
-:open_file_folder: Specializations - Web Stack programming ― Back-end  
-:bust_in_silhouette: by Johann Kerbrat, Engineering Manager at Uber Works  
-:copyright: **[Holberton School](https://www.holbertonschool.com/)**  
+:open_file_folder: Specializations - Web Stack programming ― Back-end
+:bust_in_silhouette: by Johann Kerbrat, Engineering Manager at Uber Works
+:copyright: **[Holberton School](https://www.holbertonschool.com/)**
 :bookmark: arrow functions | block scope | block scoping | for-of loop | iterators | javascript | rest parameter | spread parameter | string templating
 
 ## Resources
@@ -51,7 +51,3 @@ At the end of this project, you are expected to be able to [explain to anyone](h
 * [x] 12. Let's create a report object
 * [ ] 13. Iterating through report objects
 * [ ] 14. Iterate through object
-
-## Software engineer
-Javier Andrés Garzón Patarroyo  
-:octocat: [GitHub](https://github.com/javierandresgp/)
