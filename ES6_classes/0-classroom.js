@@ -3,7 +3,7 @@
     prefix
 */
 export default class ClassRoom {
-    constructor(maxStudentsSize = 0) {
-      this._maxStudentsSize = maxStudentsSize;
-    }
+  constructor(maxStudentsSize = 0) {
+    this._maxStudentsSize = maxStudentsSize;
   }
+}
