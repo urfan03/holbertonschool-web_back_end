@@ -1,8 +1,6 @@
-import ClassRoom from "./0-classroom";
-const initializeRooms = () => {
-    const array = [19, 20, 34];
+// Initialize size of classroom
+import ClassRoom from './0-classroom';
 
-    return array.map((n) => new ClassRoom(n));
-};
-
-export default initializeRooms;
+export default function initializeRooms() {
+  return [new ClassRoom(19), new ClassRoom(20), new ClassRoom(34)];
+}

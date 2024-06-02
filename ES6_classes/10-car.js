@@ -1,3 +1,5 @@
+// Symbol Species
+
 export default class Car {
     constructor(brand, motor, color) {
       this._brand = brand;
@@ -5,12 +7,12 @@ export default class Car {
       this._color = color;
     }
 
+    static get [Symbol.species]() {
+      return this;
+    }
+
     cloneCar() {
-      const origin = this;
-      return Object.assign(Object.create(Object.getPrototypeOf(origin)), {
-        _brand: undefined,
-        _motor: undefined,
-        _color: undefined,
-      });
+      const ModelCar = this.constructor[Symbol.species];
+      return new ModelCar();
     }
 }
