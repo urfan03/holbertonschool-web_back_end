@@ -1,6 +1,14 @@
-/*0. Keep every promise you make and only make promises you can keep*/
+// Only make Promise
 function getResponseFromAPI() {
-  return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    /* eslint-disable */
+      if (true) {
+        resolve();
+      } else {
+        reject();
+      }
+      /* eslint-enable */
+  });
 }
 
 export default getResponseFromAPI;
