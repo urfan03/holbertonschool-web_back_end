@@ -1,10 +1,12 @@
-const hasValuesFromArray = (set, array) => {
-    for (const item of array) {
-      if (!set.has(item)) {
-        return false;
-      }
+export default function hasValuesFromArray(set, array) {
+  let status = true;
+  array.map((element) => {
+    if (set.has(element)) {
+      status = true;
+    } else {
+      status = false;
     }
-    return true;
-};
-
-export default hasValuesFromArray;
+    return status;
+  });
+  return status;
+}
