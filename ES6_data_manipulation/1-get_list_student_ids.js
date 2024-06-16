@@ -1,10 +1,11 @@
-// List students
-
-const getListStudentIds = (ids) => {
-  if (!Array.isArray(ids)) {
+function getListStudentIds(studentArray) {
+  // Check if the argument is an array
+  if (!Array.isArray(studentArray)) {
     return [];
   }
-  const meids = ids.map((item) => item.id);
-  return meids;
-};
+
+  // Use map to extract ids from each student object
+  return studentArray.map((student) => student.id);
+}
+
 export default getListStudentIds;
