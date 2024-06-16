@@ -518,5 +518,4 @@ bob@dylan:~$ npm run dev 100-main.js
   photo: { status: 200, body: 'photo-profile-1' },
   user: { firstName: 'Guillaume', lastName: 'Salva' }
 }
-bob@dylan:~$
 ```
